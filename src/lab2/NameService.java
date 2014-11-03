@@ -1,5 +1,7 @@
 package lab2;
 
+import lab3.FullNameIllegalArgumentException;
+
 /**
  * This class provides various services relating to name manipulation.
  * No output should be performed here.
@@ -37,10 +39,19 @@ public class NameService {
      * @param fullName - a name containing a first name and a last name
      * @return the first name
      */
-    public String extractFirstName(String fullName) {
+
+    public String extractFirstName(String fullName) throws IllegalArgumentException {
+        if(fullName == null || fullName.isEmpty()){
+            throw new IllegalArgumentException("Sorry full name cannot be null or empty");
+        }
         String[] nameParts = fullName.split(" ");
-        return nameParts[FIRST_NAME_IDX];
+        try{
+            return nameParts[FIRST_NAME_IDX];
+        } catch (ArrayIndexOutOfBoundsException ae){
+            throw new IllegalArgumentException("Sorry first and last name only are required.");
+        }
     }
+        
 
     /**
      * Gets the length of a name.
@@ -48,7 +59,10 @@ public class NameService {
      * @param name - any full name or part of a name.
      * @return the length of the name or part.
      */
-    public int getNameLength(String name) {
+    public int getNameLength(String name) throws IllegalArgumentException {
+    if(name == null || name.isEmpty()){
+            throw new IllegalArgumentException("Sorry full name cannot be null or empty");
+        }
         return name.length();
     }
     
