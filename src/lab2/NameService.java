@@ -29,7 +29,7 @@ public class NameService {
         if(nameParts.length > 2 || nameParts.length < 2) {
             throw new IllegalArgumentException("Sorry only first and last name only are required.");
         }
-        return nameParts[nameParts.length - 1];
+        return nameParts[LAST_NAME_IDX];
     }
     
     /**
@@ -45,11 +45,10 @@ public class NameService {
             throw new IllegalArgumentException("Sorry full name cannot be null or empty");
         }
         String[] nameParts = fullName.split(" ");
-        try{
-            return nameParts[FIRST_NAME_IDX];
-        } catch (ArrayIndexOutOfBoundsException ae){
-            throw new IllegalArgumentException("Sorry first and last name only are required.");
+        if(nameParts.length > 2 || nameParts.length < 2) {
+            throw new IllegalArgumentException("Sorry only first and last name only are required.");
         }
+        return nameParts[FIRST_NAME_IDX];
     }
         
 

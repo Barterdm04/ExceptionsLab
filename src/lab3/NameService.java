@@ -23,11 +23,11 @@ public class NameService{
             throw new FullNameIllegalArgumentException();
         }
         String[] nameParts = fullName.split(" ");
-        try{
-            return nameParts[LAST_NAME_IDX];
-        } catch (ArrayIndexOutOfBoundsException ae){
+        
+        if(nameParts.length > 2 || nameParts.length < 2) {
             throw new FullNameIllegalArgumentException();
         }
+        return nameParts[LAST_NAME_IDX];
     }
     
     /**
@@ -42,11 +42,10 @@ public class NameService{
             throw new FullNameIllegalArgumentException();
         }
         String[] nameParts = fullName.split(" ");
-        try{
-            return nameParts[FIRST_NAME_IDX];
-        } catch (ArrayIndexOutOfBoundsException ae){
+        if(nameParts.length > 2 || nameParts.length < 2) {
             throw new FullNameIllegalArgumentException();
         }
+        return nameParts[FIRST_NAME_IDX];
     }
 
     /**
