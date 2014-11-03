@@ -20,13 +20,13 @@ public class NameService{
      */
     public String extractLastName(String fullName) throws IllegalArgumentException {
         if(fullName == null || fullName.isEmpty()){
-            throw new IllegalArgumentException();
+            throw new FullNameIllegalArgumentException();
         }
         String[] nameParts = fullName.split(" ");
         try{
             return nameParts[LAST_NAME_IDX];
         } catch (ArrayIndexOutOfBoundsException ae){
-            throw new IllegalArgumentException("Must provide both a first and last name");
+            throw new FullNameIllegalArgumentException();
         }
     }
     
@@ -39,13 +39,13 @@ public class NameService{
      */
     public String extractFirstName(String fullName) throws IllegalArgumentException {
         if(fullName == null || fullName.isEmpty()){
-            throw new IllegalArgumentException();
+            throw new FullNameIllegalArgumentException();
         }
         String[] nameParts = fullName.split(" ");
         try{
             return nameParts[FIRST_NAME_IDX];
         } catch (ArrayIndexOutOfBoundsException ae){
-            throw new IllegalArgumentException("Must provide both a first and last name");
+            throw new FullNameIllegalArgumentException();
         }
     }
 
@@ -57,7 +57,7 @@ public class NameService{
      */
     public int getNameLength(String name) throws IllegalArgumentException {
     if(name == null || name.isEmpty()){
-            throw new IllegalArgumentException();
+            throw new FullNameIllegalArgumentException();
         }
         return name.length();
     }
