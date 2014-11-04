@@ -1,7 +1,5 @@
 package lab2;
 
-import lab3.FullNameIllegalArgumentException;
-
 /**
  * This class provides various services relating to name manipulation.
  * No output should be performed here.

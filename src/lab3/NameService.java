@@ -20,12 +20,12 @@ public class NameService{
      */
     public String extractLastName(String fullName) throws IllegalArgumentException {
         if(fullName == null || fullName.isEmpty()){
-            throw new FullNameIllegalArgumentException();
+            throw new IllegalStringLengthException();
         }
         String[] nameParts = fullName.split(" ");
         
         if(nameParts.length > 2 || nameParts.length < 2) {
-            throw new FullNameIllegalArgumentException();
+            throw new IllegalNameFormatException();
         }
         return nameParts[LAST_NAME_IDX];
     }
@@ -37,13 +37,13 @@ public class NameService{
      * @param fullName - a name containing a first name and a last name
      * @return the first name
      */
-    public String extractFirstName(String fullName) throws IllegalArgumentException {
+    public String extractFirstName(String fullName) throws IllegalStringLengthException,IllegalNameFormatException {
         if(fullName == null || fullName.isEmpty()){
-            throw new FullNameIllegalArgumentException();
+            throw new IllegalStringLengthException();
         }
         String[] nameParts = fullName.split(" ");
         if(nameParts.length > 2 || nameParts.length < 2) {
-            throw new FullNameIllegalArgumentException();
+            throw new IllegalNameFormatException("Only first and last name are required");
         }
         return nameParts[FIRST_NAME_IDX];
     }
@@ -56,7 +56,7 @@ public class NameService{
      */
     public int getNameLength(String name) throws IllegalArgumentException {
     if(name == null || name.isEmpty()){
-            throw new FullNameIllegalArgumentException();
+            throw new IllegalStringLengthException();
         }
         return name.length();
     }
